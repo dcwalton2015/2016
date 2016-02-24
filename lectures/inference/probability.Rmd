@@ -207,7 +207,7 @@ Now let's generate all combinations of picking two cards. For this we use the fu
 
 ```{r}
 library(gtools)
-index <- permutations(52,2)
+insallindex <- permutations(52,2)
 first_card <- deck[index[,1]]
 second_card <- deck[index[,2]]
 sum(second_card == "Three Hearts") / 
@@ -250,7 +250,12 @@ We can use a Monte Carlo simulation.
 Assessment: Use `sample` to randomly select 50 birthdays. Check if they are unique.
 
 ```{r}
-##your code here
+birthdays <- sample(365,50)
+birthdays
+
+
+
+
 ```
 
 ```{r birthday-problem}

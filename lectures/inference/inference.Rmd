@@ -125,6 +125,11 @@ Because we know the proportions we can do this a bit quicker by simply using:
 ```{r}
 X <- sample( c(-1,1), 10, replace = TRUE, prob=c(10/19, 9/19))
 sum(X)
+
+X <- sample( c(-1,35), 10, replace = TRUE, prob=c(27/28, 1/38))
+sum(X)
+
+
 ```
 
 
@@ -271,7 +276,22 @@ Notice that the Monte Carlo simulation is like conducting 10,000 polls. This of 
 Suppose you are consulting for a casino. They want to know how many $1 bets a person needs to make so that the probability of negative earnings is  less than 1 in 1,000. 
 
 1. We know that the average of the sampling model is -1/19 and the standard deviation is $\sigma = 2 \sqrt{10/19 \times 9/19}$. Run a Monte Carlo simulation with $N=400$ to learn about the distribution of the errors. Remember the error is the average winning minus $\mu = -1/19$.Confirm that the expected value of the error is 0 and that the standard error is $\sigma / \sqrt{N}$. 
-```{r}
+
+```{R}
+N <- 400
+B <- 10^5
+mu <- -1/19
+sigma <- 2 * sqrt(10/19 * 9/19)
+error <- replicate(B,{
+  X <- sample(c(-1,1), N, replace = TRUE, prob=(c(10/19,9/19)))
+  mean(X) - mu
+})
+
+mean(error)
+sigma/sqrt(N)
+
+
+
 N <- 400
 B <- 10^5
 mu <- -1/19

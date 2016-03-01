@@ -207,7 +207,7 @@ Now let's generate all combinations of picking two cards. For this we use the fu
 
 ```{r}
 library(gtools)
-insallindex <- permutations(52,2)
+index <- permutations(52,2)
 first_card <- deck[index[,1]]
 second_card <- deck[index[,2]]
 sum(second_card == "Three Hearts") / 
